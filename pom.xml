@@ -21,6 +21,11 @@
             <version>1.18.26</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>3.2.2</version> <!-- Use the latest version -->
+        </dependency>
     </dependencies>
 
 </project>
