@@ -1,15 +1,15 @@
 package com.common.entity;
 
-
 import com.common.enums.ProfileStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
+
 
 @Getter
 @Setter
@@ -31,7 +31,7 @@ public class Freelancer {
     private String bio;
 
     @Column(name = "hourly_rate")
-    private Double hourlyRate;
+    private BigDecimal hourlyRate;
 
     @Column(name = "address")
     private String address;
@@ -66,8 +66,8 @@ public class Freelancer {
     @OneToMany(mappedBy = "freelancer", cascade = CascadeType.ALL, orphanRemoval = true )
     private List<Certificate> certificates;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "profile_status")
+   @Enumerated(EnumType.STRING)
+   @Column(name = "profile_status", nullable = false)
     private ProfileStatus profileStatus;
 
     @CreationTimestamp

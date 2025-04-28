@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.security.Timestamp;
 import java.util.List;
 import java.util.UUID;
@@ -29,7 +30,7 @@ public class FreelancerDTO {
 
     @NotNull(message = "hourlyRate cannot be null.")
     @Positive(message = "hourlyRate must be greater than 0.")
-    private Double hourlyRate;
+    private BigDecimal hourlyRate;
     private String address;
     private String city;
     private String state;
