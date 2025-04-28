@@ -4,7 +4,10 @@ import com.common.enums.ProfileStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.dialect.PostgreSQLEnumJdbcType;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
@@ -66,8 +69,9 @@ public class Freelancer {
     @OneToMany(mappedBy = "freelancer", cascade = CascadeType.ALL, orphanRemoval = true )
     private List<Certificate> certificates;
 
-   @Enumerated(EnumType.STRING)
-   @Column(name = "profile_status", nullable = false)
+    @Enumerated
+    @JdbcType(PostgreSQLEnumJdbcType.class)
+    @Column(columnDefinition = "profile_status")
     private ProfileStatus profileStatus;
 
     @CreationTimestamp
