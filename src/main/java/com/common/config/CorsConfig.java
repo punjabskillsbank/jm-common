@@ -20,7 +20,7 @@ public class CorsConfig {
                 if (allowedOrigins != null && !allowedOrigins.isEmpty()) {
                     registry.addMapping("/**")
                             .allowedOrigins(allowedOrigins.split(","))
-                            .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                            .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH")
                             .allowedHeaders("*")
                             .allowCredentials(true);
                 }
