@@ -28,9 +28,8 @@ public class FreelancerDTO {
     @NotNull(message = "bio cannot be null.")
     private String bio;
 
-    @NotNull(message = "hourlyRate cannot be null.")
     @Positive(message = "hourlyRate must be greater than 0.")
-    private BigDecimal hourlyRate;
+    private int hourlyRate;
     private String address;
     private String city;
     private String state;

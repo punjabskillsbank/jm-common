@@ -7,7 +7,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.dialect.PostgreSQLEnumJdbcType;
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
@@ -34,7 +33,7 @@ public class Freelancer {
     private String bio;
 
     @Column(name = "hourly_rate")
-    private BigDecimal hourlyRate;
+    private int hourlyRate;
 
     @Column(name = "address")
     private String address;
@@ -69,9 +68,9 @@ public class Freelancer {
     @OneToMany(mappedBy = "freelancer", cascade = CascadeType.ALL, orphanRemoval = true )
     private List<Certificate> certificates;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     @JdbcType(PostgreSQLEnumJdbcType.class)
-    @Column(columnDefinition = "profile_status")
+    @Column(name = "profile_status", columnDefinition = "profile_status")
     private ProfileStatus profileStatus;
 
     @CreationTimestamp
