@@ -7,8 +7,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
 import lombok.*;
-
-import java.security.Timestamp;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,9 +25,8 @@ public class FreelancerDTO {
     @NotNull(message = "bio cannot be null.")
     private String bio;
 
-    @NotNull(message = "hourlyRate cannot be null.")
     @Positive(message = "hourlyRate must be greater than 0.")
-    private Double hourlyRate;
+    private int hourlyRate;
     private String address;
     private String city;
     private String state;

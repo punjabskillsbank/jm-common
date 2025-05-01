@@ -1,15 +1,16 @@
 package com.common.entity;
 
-
 import com.common.enums.ProfileStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.JdbcType;
 import org.hibernate.annotations.UpdateTimestamp;
-
+import org.hibernate.dialect.PostgreSQLEnumJdbcType;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.UUID;
+
 
 @Getter
 @Setter
@@ -31,7 +32,7 @@ public class Freelancer {
     private String bio;
 
     @Column(name = "hourly_rate")
-    private Double hourlyRate;
+    private int hourlyRate;
 
     @Column(name = "address")
     private String address;
@@ -67,7 +68,8 @@ public class Freelancer {
     private List<Certificate> certificates;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "profile_status")
+    @JdbcType(PostgreSQLEnumJdbcType.class)
+    @Column(name = "profile_status", columnDefinition = "profile_status")
     private ProfileStatus profileStatus;
 
     @CreationTimestamp
