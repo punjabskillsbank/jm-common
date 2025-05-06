@@ -1,4 +1,4 @@
-package com.jobmatrix.entity;
+package com.common.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
