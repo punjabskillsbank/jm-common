@@ -39,7 +39,7 @@ public class FreelancerDTO {
     private String phoneNumber;
 
     @JsonProperty("isAbcMember")
-    private boolean isAbcMember;
+    private Boolean isAbcMember;
     private String profilePhotoURL;
     private List<EducationDTO> educations;
     private List<JobDTO> jobs;
