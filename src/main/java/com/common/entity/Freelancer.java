@@ -55,8 +55,8 @@ public class Freelancer {
     @Column(name = "is_abc_member")
     private boolean isAbcMember;
 
-    @Column(name = "profile_photo_url")
-    private String profilePhotoURL;
+    @Column(name = "profile_photo_s3_key")
+    private String profilePhotoS3Key;
 
     @OneToMany(mappedBy = "freelancer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Education> educations;
