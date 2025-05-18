@@ -1,4 +1,4 @@
-package com.common.utility;
+package com.common.util;
 
 import com.common.exceptionHandling.InvalidEnumValueException;
 import java.util.Arrays;
@@ -6,8 +6,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StringToList {
-    public static <E extends Enum<E>> List<E> convertToEnumList(String input, Class<E> enumClass) {
+public class EnumUtils {
+    public static <E extends Enum<E>> List<E> parseEnumList(String input, Class<E> enumClass) {
         if (input == null || input.trim().isEmpty()) {
             return Collections.emptyList();
         }
