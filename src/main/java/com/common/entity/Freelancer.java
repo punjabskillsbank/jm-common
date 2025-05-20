@@ -53,7 +53,7 @@ public class Freelancer {
     private String phoneNumber;
 
     @Column(name = "is_abc_member")
-    private boolean isAbcMember;
+    private Boolean isAbcMember;
 
     @Column(name = "profile_photo_url")
     private String profilePhotoURL;
