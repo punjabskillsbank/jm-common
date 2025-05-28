@@ -2,10 +2,7 @@ package com.common.dto;
 
 import com.common.enums.ProfileStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import java.util.List;
 import java.util.UUID;
@@ -24,6 +21,11 @@ public class FreelancerDTO {
 
     @NotNull(message = "bio cannot be null.")
     private String bio;
+
+    @NotNull(message = "services cannot be null.")
+    @Size(min = 1, message = "services cannot be empty.")
+    @Size(max = 10, message = "Cannot assign more than 10 services.")
+    private List<Long> services;
 
     @Positive(message = "hourlyRate must be greater than 0.")
     private int hourlyRate;
