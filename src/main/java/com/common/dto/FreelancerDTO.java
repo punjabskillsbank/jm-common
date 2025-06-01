@@ -22,8 +22,7 @@ public class FreelancerDTO {
     @NotNull(message = "bio cannot be null.")
     private String bio;
 
-    @NotNull(message = "Services cannot be null.")
-    @Size(min = 1, message = "Must have at least one service.")
+    @NotNull(message = "Must have at least one service.")
     @Size(max = 10, message = "Cannot assign more than 10 services.")
     private List<Long> services;
 
