@@ -1,6 +1,7 @@
 package com.common.entity;
 
 import com.common.enums.ProfileStatus;
+import com.common.enums.ProfileVisibility;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -79,4 +80,10 @@ public class Freelancer {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private Timestamp updatedAt;
+
+    @Enumerated(EnumType.STRING)
+    @JdbcType(PostgreSQLEnumJdbcType.class)
+    @Column(name = "profile_visibility", columnDefinition = "profile_visibility")
+    private ProfileVisibility profileVisibility;
+
 }
