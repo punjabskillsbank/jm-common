@@ -5,12 +5,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 @Builder(toBuilder = true)
 public class FreelancerDTO {
     @NotNull(message = "freelancerId cannot be null.")
@@ -22,9 +24,8 @@ public class FreelancerDTO {
     @NotNull(message = "bio cannot be null.")
     private String bio;
 
-    @NotNull(message = "Must have at least one service.")
-    @Size(max = 10, message = "Cannot assign more than 10 services.")
-    private List<Long> services;
+    @NotNull(message = "categories cannot be null.")
+    private Set<CategoryDTO> categoriesDTO;
 
     @Positive(message = "hourlyRate must be greater than 0.")
     private int hourlyRate;
