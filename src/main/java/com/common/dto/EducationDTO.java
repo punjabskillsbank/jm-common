@@ -15,9 +15,6 @@ import java.util.UUID;
 @NoArgsConstructor
 public class EducationDTO {
 
-    @NotNull(message = "educationId cannot be null.")
-    private Long educationId;
-
     @NotBlank(message = "degree cannot be blank.")
     @Size(max = 100, message = "degree must be at most 100 characters.")
     private String degree;

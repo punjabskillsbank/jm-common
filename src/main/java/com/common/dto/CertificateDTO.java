@@ -13,7 +13,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CertificateDTO {
-    private Long certificateId;
     private String certificateName;
     private String issuedBy;
     private Date issueDate;

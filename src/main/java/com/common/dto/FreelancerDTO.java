@@ -2,18 +2,17 @@ package com.common.dto;
 
 import com.common.enums.ProfileStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 @Builder(toBuilder = true)
 public class FreelancerDTO {
     @NotNull(message = "freelancerId cannot be null.")
@@ -24,6 +23,9 @@ public class FreelancerDTO {
 
     @NotNull(message = "bio cannot be null.")
     private String bio;
+
+    @NotNull(message = "categories cannot be null.")
+    private Set<CategoryDTO> categoriesDTO;
 
     @Positive(message = "hourlyRate must be greater than 0.")
     private int hourlyRate;

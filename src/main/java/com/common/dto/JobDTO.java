@@ -13,7 +13,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JobDTO {
-    private Long jobId;
     private String jobTitle;
     private String companyName;
     private Date startDate;
