@@ -1,6 +1,7 @@
 package com.common.dto;
 
 import com.common.enums.ProfileStatus;
+import com.common.enums.ProfileVisibility;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -49,4 +50,7 @@ public class FreelancerDTO {
 
     @NotNull(message = "profileStatus cannot be null.")
     private ProfileStatus profileStatus;
+
+    @NotNull(message = "profileVisibility cannot be null.")
+    private ProfileVisibility profileVisibility;
 }
