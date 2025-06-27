@@ -43,7 +43,7 @@ public class FreelancerDTO {
 
     @JsonProperty("isAbcMember")
     private Boolean isAbcMember;
-    private String profilePhotoURL;
+    private String profilePhotoS3Key;
     private List<EducationDTO> educations;
     private List<JobDTO> jobs;
     private List<CertificateDTO> certificates;

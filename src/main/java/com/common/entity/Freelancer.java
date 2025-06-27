@@ -57,8 +57,8 @@ public class Freelancer {
     @Column(name = "is_abc_member")
     private Boolean isAbcMember;
 
-    @Column(name = "profile_photo_url")
-    private String profilePhotoURL;
+    @Column(name = "profile_photo_s3_key")
+    private String profilePhotoS3Key;
 
     @ManyToMany
     @JoinTable(
