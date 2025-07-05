@@ -1,0 +1,7 @@
+package com.common.exceptionHandling;
+
+public class JobPostingNotFoundException extends RuntimeException {
+    public JobPostingNotFoundException(Long jobPostingId) {
+        super("JobPosting not found at given jobPostingId: " + jobPostingId);
+    }
+}
