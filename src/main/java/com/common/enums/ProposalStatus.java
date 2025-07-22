@@ -4,5 +4,6 @@ public enum ProposalStatus {
     SUBMITTED,
     WITHDRAWN,
     REJECTED,
-    ACCEPTED
+    ACCEPTED,
+    DRAFT
 }
