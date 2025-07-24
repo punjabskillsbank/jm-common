@@ -1,5 +1,6 @@
 package com.common.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -33,5 +34,6 @@ public class Skill {
     private LocalDateTime updatedAt;
 
     @ManyToMany(mappedBy = "skills", fetch = FetchType.LAZY)
+    @JsonBackReference
     private Set<JobPosting> jobPostings = new HashSet<>();
 }

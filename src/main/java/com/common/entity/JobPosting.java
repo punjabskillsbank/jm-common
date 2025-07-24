@@ -1,5 +1,6 @@
 package com.common.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.common.enums.BudgetType;
 import com.common.enums.ExperienceLevel;
 import com.common.enums.JobPostingStatus;
@@ -78,9 +79,11 @@ public class JobPosting {
             joinColumns = @JoinColumn(name = "job_posting_id"),
             inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
+    @JsonManagedReference
     private Set<Skill> skills;
 
     @OneToMany(mappedBy = "jobPosting", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<JobPostingQuestion> questions;
 
     @CreationTimestamp
