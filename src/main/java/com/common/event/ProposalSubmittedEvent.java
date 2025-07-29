@@ -11,7 +11,7 @@ import java.util.UUID;
 public class ProposalSubmittedEvent {
 
     private Long proposalId;
-    private int jobPostingId;
+    private Long jobPostingId;
     private UUID clientId;
     private UUID freelancerId;
 }
