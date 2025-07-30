@@ -55,4 +55,6 @@ public class JobPostingDTO {
     private JobPostingStatus jobPostingStatus;
 
     private List<JobPostingQuestionDTO> questions;
+
+    private List<String> attachmentUrls;
 }
