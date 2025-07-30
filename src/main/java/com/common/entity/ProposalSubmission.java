@@ -28,7 +28,7 @@ public class ProposalSubmission {
     private Long proposalId;
 
     @Column(name = "job_posting_id", nullable = false)
-    private long jobPostingId;
+    private Long jobPostingId;
 
     @Column(name = "freelancer_id", nullable = false)
     private UUID freelancerId;
