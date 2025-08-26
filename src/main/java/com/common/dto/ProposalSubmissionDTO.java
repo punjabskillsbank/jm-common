@@ -17,6 +17,8 @@ import java.util.UUID;
 @Builder(toBuilder = true)
 public class ProposalSubmissionDTO {
 
+    private Long proposalId;
+
     @NotNull(message = "Job Posting ID is required")
     private Long jobPostingId;
 
@@ -37,4 +39,6 @@ public class ProposalSubmissionDTO {
     private String coverLetter;
 
     private List<ProposalQuestionAnswerDTO> questionAnswers;
+
+    private List<String> attachmentUrls;
 }
