@@ -92,7 +92,7 @@ public class JobPosting {
     private LocalDateTime updatedAt;
 
     @ElementCollection
-    @CollectionTable(name = "job_posting_files", joinColumns = @JoinColumn(name = "job_posting_id"))
+    @CollectionTable(name = "job_posting_attachments", joinColumns = @JoinColumn(name = "job_posting_id"))
     @Column(name = "job_posting_attachment_s3_key")
     private List<String> attachmentUrls;
 }
