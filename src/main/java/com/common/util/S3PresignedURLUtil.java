@@ -1,6 +1,5 @@
-package com.common.serviceimpl;
+package com.common.util;
 
-import com.common.service.S3Service;
 import lombok.RequiredArgsConstructor;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,9 +12,9 @@ import java.time.Duration;
 
 @Service
 @RequiredArgsConstructor
-public class S3ServiceImpl implements S3Service {
+public class S3PresignedURLUtil {
 
-    private static final Logger logger = Logger.getLogger(S3ServiceImpl.class);
+    private static final Logger logger = Logger.getLogger(S3PresignedURLUtil.class);
     private static final Duration UPLOAD_URL_EXPIRATION = Duration.ofMinutes(60);
 
     @Value("${aws.s3.bucket-name}")
@@ -23,8 +22,7 @@ public class S3ServiceImpl implements S3Service {
 
     private final S3Presigner s3Presigner;
 
-    @Override
-    public URL generatePresignedUploadUrl(String fileName, String contentType) {
+    public URL generatePresignedUploadUrl(String fileName, String contentType, String bucketName) {
 
         PutObjectRequest objectRequest = PutObjectRequest.builder()
                 .bucket(bucketName)
