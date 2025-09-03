@@ -22,7 +22,7 @@ public class S3PresignedURLUtil {
 
     private final S3Presigner s3Presigner;
 
-    public URL generatePresignedUploadUrl(String fileName, String contentType, String bucketName) {
+    public URL generatePresignedUploadUrl(String fileName, String contentType) {
 
         PutObjectRequest objectRequest = PutObjectRequest.builder()
                 .bucket(bucketName)
