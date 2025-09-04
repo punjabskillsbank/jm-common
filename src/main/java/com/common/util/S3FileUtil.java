@@ -4,6 +4,7 @@ import com.common.dto.PresignedUrlResponseDTO;
 
 import com.common.exceptionHandling.InvalidFileTypeException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.net.URL;
@@ -17,13 +18,19 @@ public class S3FileUtil {
 
     private final S3PresignedURLUtil s3Service;
 
+    @Value("${aws.s3.bucket-name}")
+    private String bucketName;
+    
+    @Value("${aws.s3.key-prefix}")
+    private String s3KeyPrefix;
+
     // Allowed extensions
     private static final Set<String> ALLOWED_EXTENSIONS = Set.of(
             ".pdf", ".doc", ".docx", ".jpg",".jpeg",".png", ".webp", ".mp4",
             ".mp3", ".wav", ".ppt", ".pptx"
     );
 
-    public List<PresignedUrlResponseDTO> generateMultipleJobAttachmentUrls(String bucketName, Long proposalId, List<String> originalFilenames) {
+    public List<PresignedUrlResponseDTO> generateMultipleJobAttachmentUrls(Long proposalId, List<String> originalFilenames) {
         List<PresignedUrlResponseDTO> urls = new ArrayList<>();
 
         for (String fileName : originalFilenames) {
@@ -35,7 +42,7 @@ public class S3FileUtil {
             }
 
             String finalFileName = sanitizeFileName(fileName);  // Safe name
-            String s3Key = "proposal-attachments/" + proposalId + "/" + finalFileName;
+            String s3Key = s3KeyPrefix + "/" + proposalId + "/" + finalFileName;
 
             String contentType = guessContentType(extension);
 
