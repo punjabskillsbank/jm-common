@@ -11,6 +11,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class JobAttachmentUpdateDTO {
+public class AttachmentUpdateDTO {
     private List<String> attachmentUrls;
 }
