@@ -24,7 +24,6 @@ public class S3FileUtil {
             ".xlsm", ".docm", ".pptm"
     );
 
-
     public Map<String, PresignedUrlResponseDTO> generateMultipleJobAttachmentUrls(String entityId, Set<String> originalFilenames, String folderPrefix) {
         Map<String, PresignedUrlResponseDTO> urls = new HashMap<>();
 
@@ -40,9 +39,7 @@ public class S3FileUtil {
             String finalFileName = sanitizeFileName(fileName);  // Safe name
             String s3Key = folderPrefix + entityId + "/" + finalFileName;
 
-            String contentType = guessContentType(extension);
-
-            URL presignedUrl = s3Service.generatePresignedUploadUrl(s3Key, contentType);
+            URL presignedUrl = s3Service.generatePresignedUploadUrl(s3Key);
             urls.put(fileName, new PresignedUrlResponseDTO(presignedUrl, s3Key));
         }
 
@@ -52,23 +49,6 @@ public class S3FileUtil {
     private String getExtensionFromFileName(String fileName) {
         int index = fileName.lastIndexOf('.');
         return index != -1 ? fileName.substring(index).toLowerCase() : "";
-    }
-
-    private String guessContentType(String ext) {
-        return switch (ext) {
-            case ".jpg", ".jpeg" -> "image/jpeg";
-            case ".png" -> "image/png";
-            case ".webp" -> "image/webp";
-            case ".pdf" -> "application/pdf";
-            case ".doc" -> "application/msword";
-            case ".docx" -> "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-            case ".ppt" -> "application/vnd.ms-powerpoint";
-            case ".pptx" -> "application/vnd.openxmlformats-officedocument.presentationml.presentation";
-            case ".mp4" -> "video/mp4";
-            case ".mp3" -> "audio/mpeg";
-            case ".wav" -> "audio/wav";
-            default -> "application/octet-stream"; // fallback
-        };
     }
 
     // Replace spaces and reserved characters (/ \ ? % * : | " < > #) with underscore
