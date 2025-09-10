@@ -40,5 +40,5 @@ public class ProposalSubmissionDTO {
 
     private List<ProposalQuestionAnswerDTO> questionAnswers;
 
-    private List<String> attachmentUrls;
+    private List<String> attachment_s3_key;
 }
