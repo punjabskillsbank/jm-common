@@ -1,7 +1,6 @@
 package com.common.util;
 
 import com.common.dto.PresignedUrlResponseDTO;
-import com.common.util.S3PresignedURLUtil;
 import com.common.exceptionHandling.InvalidFileTypeException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,7 +12,7 @@ import java.util.*;
 @RequiredArgsConstructor
 public class S3FileUtil {
 
-    private final S3PresignedURLUtil s3Service;
+    private final S3PresignedURLUtil s3PresignedURLUtil;
 
     private static final Set<String> NOT_ALLOWED_EXTENSIONS = Set.of(
             ".exe", ".msi", ".bat", ".cmd", ".com", ".scr", ".pif", ".cpl", ".gadget",
@@ -39,7 +38,7 @@ public class S3FileUtil {
             String finalFileName = sanitizeFileName(fileName);  // Safe name
             String s3Key = folderPrefix + entityId + "/" + finalFileName;
 
-            URL presignedUrl = s3Service.generatePresignedUploadUrl(s3Key);
+            URL presignedUrl = s3PresignedURLUtil.generatePresignedUploadUrl(s3Key);
             urls.put(fileName, new PresignedUrlResponseDTO(presignedUrl, s3Key));
         }
 

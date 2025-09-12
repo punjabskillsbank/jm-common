@@ -56,5 +56,5 @@ public class JobPostingDTO {
 
     private List<JobPostingQuestionDTO> questions;
 
-    private List<String> attachmentUrls;
+    private List<String> attachmentS3Keys;
 }

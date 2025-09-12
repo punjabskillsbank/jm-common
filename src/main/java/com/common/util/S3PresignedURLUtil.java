@@ -22,11 +22,32 @@ public class S3PresignedURLUtil {
 
     private final S3Presigner s3Presigner;
 
+    //Version without contentType (for job attachments)
     public URL generatePresignedUploadUrl(String fileName) {
 
         PutObjectRequest objectRequest = PutObjectRequest.builder()
                 .bucket(bucketName)
                 .key(fileName)
+                .build();
+
+        PutObjectPresignRequest presignRequest = PutObjectPresignRequest.builder()
+                .signatureDuration(UPLOAD_URL_EXPIRATION)
+                .putObjectRequest(objectRequest)
+                .build();
+
+        URL presignedUrl = s3Presigner.presignPutObject(presignRequest).url();
+        logger.info("Generated presigned upload URL for file: " + fileName);
+        return presignedUrl;
+
+    }
+
+    //Overloaded version with contentType (for profile photos)
+    public URL generatePresignedUploadUrl(String fileName, String contentType) {
+
+        PutObjectRequest objectRequest = PutObjectRequest.builder()
+                .bucket(bucketName)
+                .key(fileName)
+                .contentType(contentType)
                 .build();
 
         PutObjectPresignRequest presignRequest = PutObjectPresignRequest.builder()

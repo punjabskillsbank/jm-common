@@ -94,5 +94,5 @@ public class JobPosting {
     @ElementCollection
     @CollectionTable(name = "job_posting_attachments", joinColumns = @JoinColumn(name = "job_posting_id"))
     @Column(name = "job_posting_attachment_s3_key")
-    private List<String> attachmentUrls;
+    private List<String> attachmentS3Keys;
 }
