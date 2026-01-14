@@ -15,6 +15,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+import com.common.entity.ProposalAttachment;
+
 @Entity
 @Table(name = "proposals")
 @Data
@@ -55,6 +57,9 @@ public class ProposalSubmission {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "proposalSubmission", orphanRemoval = true)
+    @OneToMany(mappedBy = "proposalSubmission", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProposalQuestionAnswer> questionAnswers;
+
+    @OneToMany(mappedBy = "proposalSubmission", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProposalAttachment> proposalAttachments;
 }
